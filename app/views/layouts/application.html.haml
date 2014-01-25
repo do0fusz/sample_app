@@ -4,8 +4,7 @@
     = stylesheet_link_tag    "application"
     = javascript_include_tag "application"
     = csrf_meta_tags
-    %title
-      Ruby on Rails sample app  |  
-      =yield(:title) 
+    %title 
+      =full_title(yield(:title))
   %body
     =yield
