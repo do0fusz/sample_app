@@ -27,4 +27,3 @@ def secure_token
 end
 
 SampleApp::Application.config.secret_key_base = secure_token
-
