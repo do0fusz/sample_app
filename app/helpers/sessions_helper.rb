@@ -15,6 +15,10 @@ module SessionsHelper
 	  	self.current_user = nil
 	  end
 
+	def current_user?(user)
+		user == current_user
+	end
+
 	#setting the current user
 	def current_user=(user)
 		@current_user = user
@@ -29,6 +33,15 @@ module SessionsHelper
 	# is the user signed in ? 
 	def signed_in?
 		!current_user.nil?
+	end
+
+	def redirect_back_or(default)
+		redirect_to(session[:return_to] || default)
+		session.delete(:return_to)
+	end
+
+	def store_location
+		session[:return_to] = request.url if request.get?
 	end
 
 
